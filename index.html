@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerenciador de Conteúdos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__brand-mark"></span>
+      Gerenciador de Conteúdos
+    </div>
+
+    <nav class="menu" aria-label="Empresas">
+      <a class="menu__item menu__item--gelacionado" href="#gelacionado" data-company="gelacionado">Gelacionado</a>
+      <a class="menu__item menu__item--studio" href="#studio-verso" data-company="studio-verso">Studio_Verso</a>
+      <a class="menu__item menu__item--eletro" href="#eletro-install" data-company="eletro-install">Eletro_Install</a>
+    </nav>
+  </header>
+
+  <main class="board">
+
+    <section class="card card--gelacionado" id="gelacionado">
+      <div class="card__logo" role="img" aria-label="Logo da Gelacionado">
+        <span class="card__logo-plus">+</span>
+      </div>
+      <h2 class="card__title">Gelacionado</h2>
+      <p class="card__desc">
+        Site institucional com foco em soluções de refrigeração.
+        Conteúdo, estilo e estrutura ficam reunidos na pasta do projeto.
+      </p>
+      <dl class="card__meta">
+        <div class="card__meta-row">
+          <dt>Página</dt>
+          <dd>Index_G.html</dd>
+        </div>
+        <div class="card__meta-row">
+          <dt>Estilo</dt>
+          <dd>Geral_G.css</dd>
+        </div>
+      </dl>
+      <a class="card__link" href="Gelacionado/Index_G.html">Abrir site →</a>
+    </section>
+
+    <section class="card card--studio" id="studio-verso">
+      <div class="card__logo" role="img" aria-label="Logo da Studio Verso">
+        <span class="card__logo-plus">+</span>
+      </div>
+      <h2 class="card__title">Studio_Verso</h2>
+      <p class="card__desc">
+        Site institucional com identidade criativa e autoral.
+        Conteúdo, estilo e estrutura ficam reunidos na pasta do projeto.
+      </p>
+      <dl class="card__meta">
+        <div class="card__meta-row">
+          <dt>Página</dt>
+          <dd>Inicio</dd>
+        </div>
+      </dl>
+      <a class="card__link" href="Studio_Verso/Index_S.html">Abrir site →</a>
+    </section>
+
+    <section class="card card--eletro" id="eletro-install">
+      <div class="card__logo" role="img" aria-label="Logo da Eletro Install">
+        <span class="card__logo-plus">+</span>
+      </div>
+      <h2 class="card__title">Eletro_Install</h2>
+      <p class="card__desc">
+        Site institucional com foco em instalações elétricas.
+        Conteúdo, estilo e estrutura ficam reunidos na pasta do projeto.
+      </p>
+      <dl class="card__meta">
+        <div class="card__meta-row">
+          <dt>Página</dt>
+          <dd>Index_E.html</dd>
+        </div>
+        <div class="card__meta-row">
+          <dt>Estilo</dt>
+          <dd>Geral_E.css</dd>
+        </div>
+      </dl>
+      <a class="card__link" href="Eletro_Install/files/Index_E.html">Abrir site →</a>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    Estrutura de arquivos definida em <code>README.md</code>
+  </footer>
+
+<script src="index.js"></script>
+</body>
+</html>
