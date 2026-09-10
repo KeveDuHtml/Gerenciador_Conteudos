@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel administrativo — Eletro_Install</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Geral_E.css">
+<link rel="stylesheet" href="Painel_E.css">
+</head>
+<body>
+
+  <div class="hazard"></div>
+
+  <header class="admtop">
+    <div class="admtop__brand">
+      <span class="bolt" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="currentColor"/></svg>
+      </span>
+      Painel administrativo
+    </div>
+    <nav class="admtop__nav">
+      <a href="Index_E.html">Ver loja</a>
+      <a href="Admin_E.html">Sair</a>
+    </nav>
+  </header>
+
+  <main class="dash">
+
+    <p class="dash__note">
+      Os números abaixo são dados de demonstração — quando o painel for
+      ligado a um sistema de pagamentos de verdade, essas informações
+      passam a vir de lá automaticamente.
+    </p>
+
+    <section class="kpis">
+      <article class="kpi">
+        <span class="kpi__label">Total recebido</span>
+        <strong class="kpi__value" id="kpiRevenue">R$ 0</strong>
+        <span class="kpi__hint">Somente pedidos pagos</span>
+      </article>
+      <article class="kpi">
+        <span class="kpi__label">Pagamentos recebidos</span>
+        <strong class="kpi__value" id="kpiPaidCount">0</strong>
+        <span class="kpi__hint">Pedidos com status pago</span>
+      </article>
+      <article class="kpi kpi--pending">
+        <span class="kpi__label">Pedidos pendentes</span>
+        <strong class="kpi__value" id="kpiPendingCount">0</strong>
+        <span class="kpi__hint">Aguardando pagamento</span>
+      </article>
+      <article class="kpi">
+        <span class="kpi__label">Ticket médio</span>
+        <strong class="kpi__value" id="kpiAvg">R$ 0</strong>
+        <span class="kpi__hint">Por pedido pago</span>
+      </article>
+    </section>
+
+    <section class="charts">
+      <article class="chart-card">
+        <h2>Receita nos últimos 7 dias</h2>
+        <canvas id="revenueChart" height="220"></canvas>
+      </article>
+      <article class="chart-card">
+        <h2>Pedidos por categoria</h2>
+        <canvas id="categoryChart" height="220"></canvas>
+      </article>
+    </section>
+
+    <section class="orders-card">
+      <div class="orders-card__head">
+        <h2>Últimos pedidos</h2>
+        <div class="orders-card__legend">
+          <span><i class="dot dot--paid"></i>Pago</span>
+          <span><i class="dot dot--pending"></i>Pendente</span>
+          <span><i class="dot dot--cancel"></i>Cancelado</span>
+        </div>
+      </div>
+      <div class="orders-table__wrap">
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Serviço</th>
+              <th>Categoria</th>
+              <th>Valor</th>
+              <th>Status</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody id="ordersBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="Painel_E.js"></script>
+</body>
+</html>
