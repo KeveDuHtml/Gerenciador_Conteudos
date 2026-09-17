@@ -517,10 +517,22 @@ footer.site-footer{
   position:absolute; border-radius:50%; pointer-events:none;
 }
 .login-left .logo-badge{
-  width:132px; height:132px; border-radius:50%;
-  margin-bottom:26px; position:relative; z-index:1;
-  box-shadow:0 0 0 1px var(--line), 0 16px 40px -12px rgba(0,0,0,0.55);
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin-bottom: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: whitesmoke;
+  border: 2px dashed rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(2px);
+  width:20%; 
+  height:20%; 
+  border-radius:75%; 
+  object-fit:cover;
 }
+
 .login-left .brand-name{
   position:relative; z-index:1;
   font-size:26px; margin-bottom:8px;
