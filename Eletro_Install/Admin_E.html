@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acesso restrito — Eletro_Install</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Geral_E.css">
+</head>
+<body>
+
+  <div class="hazard"></div>
+
+  <div class="admin">
+    <div class="admin__card" id="adminCard">
+
+      <div id="adminLogin">
+        <div class="admin__icon">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h1>Área restrita</h1>
+        <p>Digite a senha de administrador para continuar.</p>
+
+        <form class="admin__form" id="adminForm">
+          <input class="admin__input" type="password" id="adminPassword" placeholder="Senha" autocomplete="current-password" required>
+          <button class="admin__submit" type="submit">Entrar</button>
+          <span class="admin__error" id="adminError"></span>
+        </form>
+
+        <a class="admin__back" href="Index_E.html">← Voltar para a loja</a>
+      </div>
+
+      <div id="adminSuccess" class="admin__success">
+        <div class="admin__success-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h1>Acesso liberado</h1>
+        <p>Senha correta. Você já pode entrar no painel administrativo.</p>
+        <a class="admin__submit" id="goToPanel" href="Painel_E.html?acesso=ok" style="display:block; margin-bottom:10px;">Entrar no painel</a>
+        <a class="admin__back" href="Index_E.html">← Voltar para a loja</a>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+  // Troque pela senha desejada. Este é um controle simples do lado do
+  // cliente — sem um painel/servidor real por trás ainda não há como
+  // protegê-lo de verdade, mas cumpre a função de "portão" por enquanto.
+  const ADMIN_PASSWORD = "admin123";
+
+  const form = document.getElementById("adminForm");
+  const input = document.getElementById("adminPassword");
+  const errorEl = document.getElementById("adminError");
+  const card = document.getElementById("adminCard");
+  const loginView = document.getElementById("adminLogin");
+  const successView = document.getElementById("adminSuccess");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (input.value === ADMIN_PASSWORD) {
+      loginView.style.display = "none";
+      successView.classList.add("is-visible");
+    } else {
+      errorEl.textContent = "Senha incorreta. Tente novamente.";
+      card.classList.remove("is-shake");
+      void card.offsetWidth; // reinicia a animação
+      card.classList.add("is-shake");
+      input.value = "";
+      input.focus();
+    }
+  });
+</script>
+</body>
+</html>

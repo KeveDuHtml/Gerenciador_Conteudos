@@ -1,11 +1,88 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eletro Install</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eletro_Install — Serviços elétricos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Geral_E.css">
 </head>
 <body>
-    
+
+  <div class="hazard"></div>
+
+  <header class="topbar">
+    <a href="#topo" class="topbar__brand">
+      <span class="bolt" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="currentColor"/></svg>
+      </span>
+      Eletro_Install
+    </a>
+
+    <nav class="cats" aria-label="Categorias">
+      <button class="cats__btn is-active" data-cat="todos">Todos</button>
+      <button class="cats__btn" data-cat="residencial">Residencial</button>
+      <button class="cats__btn" data-cat="comercial">Comercial</button>
+      <button class="cats__btn" data-cat="industrial">Industrial</button>
+      <button class="cats__btn" data-cat="automacao">Automação</button>
+    </nav>
+
+    <div class="topbar__actions">
+        <a class="restricted-link" href="D:\Users\Professor\Documents\GitHub\Gerenciador_Conteudos\index.html">Voltar</a>
+        <a class="restricted-link" href="Admin_E.html">Acesso restrito</a>
+      <button class="cart-btn" id="cartOpen" aria-label="Abrir carrinho">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.4 12.2a2 2 0 0 0 2 1.8h7.6a2 2 0 0 0 2-1.6L21 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="21" r="1.4" fill="currentColor"/><circle cx="18" cy="21" r="1.4" fill="currentColor"/></svg>
+        <span class="cart-btn__badge" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="topo">
+    <section class="hero">
+      <h1>Instalações elétricas feitas por quem entende do assunto.</h1>
+      <p>Escolha o serviço, adicione ao carrinho e feche o orçamento direto no WhatsApp — sem burocracia.</p>
+    </section>
+
+    <section class="catalog" id="catalog" aria-label="Serviços">
+      <!-- os cartões de serviço são inseridos pelo Script_E.js -->
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>Eletro_Install · orçamentos e visitas técnicas sob consulta</div>
+    <a class="footer__whats" id="footerWhats" href="#" target="_blank" rel="noopener">
+      Falar no WhatsApp
+    </a>
+  </footer>
+
+  <!-- Botão flutuante de WhatsApp -->
+  <a class="whats-float" id="whatsFloat" href="#" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 2C8.3 2 2 8.3 2 16c0 2.6.7 5.1 2 7.3L2 30l6.9-1.8A14 14 0 0 0 16 30c7.7 0 14-6.3 14-14S23.7 2 16 2Zm0 25.4c-2.3 0-4.5-.6-6.4-1.8l-.5-.3-4.1 1.1 1.1-4-.3-.5A11.4 11.4 0 1 1 27.4 16 11.4 11.4 0 0 1 16 27.4Zm6.2-8.5c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2s-.9 1.1-1.1 1.3-.4.2-.7.1a9.3 9.3 0 0 1-2.7-1.7 10.1 10.1 0 0 1-1.9-2.3c-.2-.3 0-.5.1-.7l.5-.6.3-.5c.1-.2 0-.4 0-.5s-.8-1.9-1.1-2.6c-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.8s1.2 3.3 1.4 3.5c.2.3 2.4 3.7 5.9 5.1a20 20 0 0 0 2 .7c.8.3 1.6.2 2.1.1.7-.1 2-.8 2.3-1.6.3-.8.3-1.4.2-1.6-.1-.2-.3-.3-.6-.4Z"/></svg>
+  </a>
+
+  <!-- Painel do carrinho -->
+  <aside class="cart" id="cart" aria-hidden="true">
+    <div class="cart__head">
+      <h2>Seu carrinho</h2>
+      <button class="cart__close" id="cartClose" aria-label="Fechar carrinho">×</button>
+    </div>
+    <div class="cart__items" id="cartItems">
+      <p class="cart__empty" id="cartEmpty">Nenhum serviço adicionado ainda.</p>
+    </div>
+    <div class="cart__foot">
+      <div class="cart__total">
+        <span>Total</span>
+        <strong id="cartTotal">R$ 0</strong>
+      </div>
+      <a class="cart__checkout" id="cartCheckout" href="#" target="_blank" rel="noopener">
+        Finalizar no WhatsApp
+      </a>
+    </div>
+  </aside>
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+<script src="Script_E.js"></script>
 </body>
 </html>
