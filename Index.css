@@ -147,10 +147,11 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.22);
+  background: whitesmoke;
   border: 2px dashed rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(2px);
 }
+.card__logo img { width:100%; height:100%; border-radius:50%; object-fit:cover; }
 
 .card__logo-plus {
   font-family: var(--font-display);
@@ -163,6 +164,8 @@ a { color: inherit; text-decoration: none; }
    imagem, por exemplo:
    <div class="card__logo"><img src="logo-gelacionado.png" alt=""></div>
    e adicione: .card__logo img { width:100%; height:100%; border-radius:50%; object-fit:cover; } */
+
+
 
 .card__title {
   font-family: var(--font-display);
