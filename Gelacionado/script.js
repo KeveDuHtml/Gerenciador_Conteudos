@@ -370,7 +370,7 @@
 
       if (cart.length === 0) {
         listEl.innerHTML =
-          '<div class="empty-state">Seu carrinho está vazio.<br><br><a class="btn btn-ghost btn-sm" href="servicos.html">Ver serviços</a></div>';
+          '<div class="empty-state">Seu carrinho está vazio.<br><br><a class="btn btn-ghost btn-sm" href="servicos.php">Ver serviços</a></div>';
       } else {
         listEl.innerHTML = cart
           .map(
