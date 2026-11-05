@@ -370,7 +370,7 @@
 
       if (cart.length === 0) {
         listEl.innerHTML =
-          '<div class="empty-state">Seu carrinho está vazio.<br><br><a class="btn btn-ghost btn-sm" href="servicos.html">Ver serviços</a></div>';
+          '<div class="empty-state">Seu carrinho está vazio.<br><br><a class="btn btn-ghost btn-sm" href="servicos.php">Ver serviços</a></div>';
       } else {
         listEl.innerHTML = cart
           .map(
@@ -839,6 +839,119 @@
   }
 
   /* ---------------------------------------------------------
+     WIDGET DO HERO (painel demonstrativo, apenas ilustrativo —
+     não representa uma leitura real de temperatura do ambiente)
+  --------------------------------------------------------- */
+  function initHeroGauge() {
+    const ring = document.getElementById("gauge-ring");
+    const tempEl = document.getElementById("gauge-temp");
+    const condEl = document.getElementById("gauge-cond");
+    const fanBtn = document.getElementById("gauge-fan");
+    const modeLabel = document.getElementById("gauge-mode-label");
+
+    if (!ring || !tempEl || !condEl) return;
+
+    const MIN_TEMP = 16;
+    const MAX_TEMP = 30;
+    const FAN_SPEEDS = ["Baixa", "Média", "Alta"];
+    let temp = 21;
+    let fanIndex = 1;
+    let dragging = false;
+
+    function render() {
+      tempEl.textContent = `${temp}°C`;
+      ring.setAttribute("aria-valuenow", String(temp));
+
+      const pct = (temp - MIN_TEMP) / (MAX_TEMP - MIN_TEMP);
+      const deg = Math.round(pct * 360);
+      ring.style.background = `conic-gradient(var(--ice) 0deg ${deg}deg, var(--border-soft) ${deg}deg 360deg)`;
+
+      if (temp <= 19) {
+        condEl.textContent = "Resfriando";
+        if (modeLabel) modeLabel.textContent = "Turbo";
+      } else if (temp >= 26) {
+        condEl.textContent = "Modo suave";
+        if (modeLabel) modeLabel.textContent = "Suave";
+      } else {
+        condEl.textContent = "Confortável";
+        if (modeLabel) modeLabel.textContent = "Eco";
+      }
+
+      if (fanBtn) fanBtn.textContent = FAN_SPEEDS[fanIndex];
+    }
+
+    // calcula a temperatura a partir da posição do ponteiro
+    // em relação ao centro do círculo (0° no topo, sentido horário)
+    function updateFromPointer(clientX, clientY) {
+      const rect = ring.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const dx = clientX - centerX;
+      const dy = clientY - centerY;
+
+      let angle = Math.atan2(dx, -dy) * (180 / Math.PI);
+      if (angle < 0) angle += 360;
+
+      const next = Math.round(MIN_TEMP + (angle / 360) * (MAX_TEMP - MIN_TEMP));
+      temp = Math.min(MAX_TEMP, Math.max(MIN_TEMP, next));
+      render();
+    }
+
+    // mouse (desktop): só ajusta enquanto o botão estiver pressionado (clicar e arrastar)
+    ring.addEventListener("mousedown", (e) => {
+      dragging = true;
+      updateFromPointer(e.clientX, e.clientY);
+    });
+    window.addEventListener("mousemove", (e) => {
+      if (!dragging) return;
+      updateFromPointer(e.clientX, e.clientY);
+    });
+    window.addEventListener("mouseup", () => { dragging = false; });
+
+    // toque: acompanha o dedo enquanto arrasta sobre o medidor
+    ring.addEventListener(
+      "touchstart",
+      (e) => {
+        dragging = true;
+        if (e.touches[0]) updateFromPointer(e.touches[0].clientX, e.touches[0].clientY);
+      },
+      { passive: true }
+    );
+    ring.addEventListener(
+      "touchmove",
+      (e) => {
+        if (!dragging || !e.touches[0]) return;
+        e.preventDefault();
+        updateFromPointer(e.touches[0].clientX, e.touches[0].clientY);
+      },
+      { passive: false }
+    );
+    ring.addEventListener("touchend", () => { dragging = false; });
+
+    // acessibilidade: setas do teclado também ajustam
+    ring.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowUp" || e.key === "ArrowRight") {
+        temp = Math.min(MAX_TEMP, temp + 1);
+        render();
+        e.preventDefault();
+      } else if (e.key === "ArrowDown" || e.key === "ArrowLeft") {
+        temp = Math.max(MIN_TEMP, temp - 1);
+        render();
+        e.preventDefault();
+      }
+    });
+
+    if (fanBtn) {
+      fanBtn.addEventListener("click", () => {
+        fanIndex = (fanIndex + 1) % FAN_SPEEDS.length;
+        render();
+      });
+    }
+
+    render();
+  }
+
+  /* ---------------------------------------------------------
      BOOT
   --------------------------------------------------------- */
   document.addEventListener("DOMContentLoaded", function () {
@@ -847,6 +960,7 @@
     initCartPage();
     initContactForm();
     initAdmin();
+    initHeroGauge();
 
     // catálogos são inicializados pelas próprias páginas via data-attribute
     const svcContainer = document.querySelector("[data-catalog='servico']");

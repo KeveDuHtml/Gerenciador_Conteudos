@@ -1,3 +1,4 @@
+<?php require __DIR__ . "/auth.php"; require_login(); ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,24 +12,25 @@
 
 <header class="site-header">
   <div class="container">
-    <a href="index.html" class="brand">
-      <span class="brand-mark">G</span>
+    <a href="index.php" class="brand">
+      <img src="logo.png" alt="Logo" class="imagem_logo" >
       <span>Gelacionado<small>CLIMATIZAÇÃO &amp; AUTOMAÇÃO</small></span>
     </a>
 
     <nav class="main-nav" id="main-nav">
-      <a href="index.html" class="current">Início</a>
-      <a href="servicos.html">Serviços</a>
-      <a href="paineis-inteligentes.html">Painéis Inteligentes</a>
-      <a href="sobre.html">Sobre</a>
-      <a href="contato.html">Contato</a>
+      <a href="index.php" class="current">Início</a>
+      <a href="servicos.php">Serviços</a>
+      <a href="paineis-inteligentes.php">Painéis Inteligentes</a>
+      <a href="sobre.php">Sobre</a>
+      <a href="contato.php">Contato</a>
     </nav>
 
     <div class="header-actions">
-      <a href="carrinho.html" class="cart-button">
+      <a href="carrinho.php" class="cart-button">
         🛒 Carrinho
         <span class="cart-count" data-cart-count>0</span>
       </a>
+      <a href="logout.php" class="btn btn-ghost btn-sm">Sair</a>
       <button class="nav-toggle" aria-label="Abrir menu" aria-controls="main-nav">☰</button>
     </div>
   </div>
@@ -44,18 +46,15 @@
         <h1>O clima certo do jeito mais inteligente de controlar.</h1>
         <p class="lead">A Gelacionado instala, mantém e conecta seu ar-condicionado a painéis inteligentes que colocam temperatura, agendamento e conforto na palma da sua mão.</p>
         <div class="hero-cta">
-          <a href="servicos.html" class="btn btn-primary">Ver catálogo de serviços</a>
-          <a href="contato.html" class="btn btn-ghost">Falar com um especialista</a>
+          <a href="servicos.php" class="btn btn-primary">Ver catálogo de serviços</a>
+          <a href="contato.php" class="btn btn-ghost">Falar com um especialista</a>
         </div>
         <div class="hero-stats">
           <div>
             <div class="stat-num">1.200+</div>
             <div class="stat-label">Instalações realizadas</div>
           </div>
-          <div>
-            <div class="stat-num">9 anos</div>
-            <div class="stat-label">Atuando em Fortaleza</div>
-          </div>
+          
           <div>
             <div class="stat-num">4,9★</div>
             <div class="stat-label">Avaliação média dos clientes</div>
@@ -65,21 +64,25 @@
 
       <div class="gauge-panel">
         <div class="gauge-row">
-          <span>PAINEL FROST · SALA</span>
-          <span>ao vivo</span>
+          <span>PAINEL FROST · DEMONSTRAÇÃO</span>
+          <span class="gauge-live-badge">🖱️ interativo</span>
         </div>
+
         <div style="position:relative; display:flex; justify-content:center;">
-          <div class="gauge-ring"></div>
+          <div class="gauge-ring" id="gauge-ring" role="slider" tabindex="0" aria-label="Ajustar temperatura simulada" aria-valuemin="16" aria-valuemax="30" aria-valuenow="21"></div>
           <div class="gauge-center">
-            <div class="temp">21°C</div>
-            <div class="cond">Modo automático</div>
+            <div class="temp" id="gauge-temp">21°C</div>
+            <div class="cond" id="gauge-cond">Confortável</div>
           </div>
         </div>
+
         <div class="gauge-legend">
-          <div><strong>72%</strong>umidade</div>
-          <div><strong>Ligado</strong>desde 08:14</div>
-          <div><strong>Eco</strong>consumo</div>
+          <div><strong>Velocidade</strong>
+            <button type="button" class="gauge-fan-btn" id="gauge-fan">Média</button>
+          </div>
+          <div><strong id="gauge-mode-label">Eco</strong>consumo estimado</div>
         </div>
+        <p class="gauge-hint">Simulação de como o painel funciona — clique e arraste (ou toque e arraste no celular) para ajustar.</p>
       </div>
     </div>
   </section>
@@ -125,17 +128,17 @@
         <div class="feature-card">
           <h3>Instalação Split Inverter</h3>
           <p>A partir de <strong style="color:var(--white)">R$ 480</strong> — instalação completa com suporte e teste de carga.</p>
-          <a href="servicos.html" class="btn btn-ghost btn-sm">Ver detalhes</a>
+          <a href="servicos.php" class="btn btn-ghost btn-sm">Ver detalhes</a>
         </div>
         <div class="feature-card">
           <h3>Higienização Completa</h3>
           <p>A partir de <strong style="color:var(--white)">R$ 150</strong> — limpeza profunda contra fungos e odores.</p>
-          <a href="servicos.html" class="btn btn-ghost btn-sm">Ver detalhes</a>
+          <a href="servicos.php" class="btn btn-ghost btn-sm">Ver detalhes</a>
         </div>
         <div class="feature-card">
           <h3>Painel Frost One</h3>
           <p>A partir de <strong style="color:var(--white)">R$ 890</strong> — central touch com agendamento inteligente.</p>
-          <a href="paineis-inteligentes.html" class="btn btn-ghost btn-sm">Ver detalhes</a>
+          <a href="paineis-inteligentes.php" class="btn btn-ghost btn-sm">Ver detalhes</a>
         </div>
       </div>
     </div>
@@ -149,7 +152,7 @@
           <h2>Pronto para climatizar com inteligência?</h2>
           <p>Monte seu orçamento no catálogo e envie direto para o nosso WhatsApp.</p>
         </div>
-        <a href="servicos.html" class="btn btn-amber">Montar orçamento</a>
+        <a href="servicos.php" class="btn btn-amber">Montar orçamento</a>
       </div>
     </div>
   </section>
@@ -160,8 +163,8 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="brand" style="margin-bottom:12px;">
-          <span class="brand-mark">G</span>
+        <div class="brand" style="margin: bottom 20px;">
+          <img src="logo.png" alt="Logo" class="Footer_logo" >
           <span>Gelacionado</span>
         </div>
         <p style="font-size:.88rem;">Climatização e automação inteligente de ambientes em Fortaleza e região metropolitana.</p>
@@ -169,17 +172,17 @@
       <div>
         <h4>NAVEGAÇÃO</h4>
         <ul>
-          <li><a href="servicos.html">Serviços</a></li>
-          <li><a href="paineis-inteligentes.html">Painéis Inteligentes</a></li>
-          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="servicos.php">Serviços</a></li>
+          <li><a href="paineis-inteligentes.php">Painéis Inteligentes</a></li>
+          <li><a href="sobre.php">Sobre nós</a></li>
         </ul>
       </div>
       <div>
         <h4>ATENDIMENTO</h4>
         <ul>
-          <li><a href="contato.html">Fale conosco</a></li>
-          <li><a href="carrinho.html">Meu carrinho</a></li>
-          <li><a href="admin.html">Painel administrativo</a></li>
+          <li><a href="contato.php">Fale conosco</a></li>
+          <li><a href="carrinho.php">Meu carrinho</a></li>
+          <li><a href="admin.php">Painel administrativo</a></li>
         </ul>
       </div>
       <div>

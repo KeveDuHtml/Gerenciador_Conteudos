@@ -1,3 +1,4 @@
+<?php require __DIR__ . "/auth.php"; require_login(); ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,24 +12,25 @@
 
 <header class="site-header">
   <div class="container">
-    <a href="index.html" class="brand">
-      <span class="brand-mark">G</span>
+    <a href="index.php" class="brand">
+      <img src="logo.png" alt="Gelacionado" class="imagem_logo">
       <span>Gelacionado<small>CLIMATIZAÇÃO &amp; AUTOMAÇÃO</small></span>
     </a>
 
     <nav class="main-nav" id="main-nav">
-      <a href="index.html">Início</a>
-      <a href="servicos.html">Serviços</a>
-      <a href="paineis-inteligentes.html" class="current">Painéis Inteligentes</a>
-      <a href="sobre.html">Sobre</a>
-      <a href="contato.html">Contato</a>
+      <a href="index.php">Início</a>
+      <a href="servicos.php">Serviços</a>
+      <a href="paineis-inteligentes.php" class="current">Painéis Inteligentes</a>
+      <a href="sobre.php">Sobre</a>
+      <a href="contato.php">Contato</a>
     </nav>
 
     <div class="header-actions">
-      <a href="carrinho.html" class="cart-button">
+      <a href="carrinho.php" class="cart-button">
         🛒 Carrinho
         <span class="cart-count" data-cart-count>0</span>
       </a>
+      <a href="logout.php" class="btn btn-ghost btn-sm">Sair</a>
       <button class="nav-toggle" aria-label="Abrir menu" aria-controls="main-nav">☰</button>
     </div>
   </div>
@@ -37,7 +39,7 @@
 <main>
   <section class="page-hero">
     <div class="container">
-      <div class="breadcrumb"><a href="index.html">Início</a> / Painéis Inteligentes</div>
+      <div class="breadcrumb"><a href="index.php">Início</a> / Painéis Inteligentes</div>
       <span class="eyebrow">Automação de ambientes</span>
       <h1>Painéis inteligentes Gelacionado</h1>
       <p class="lead">Centrais de controle, sensores e kits de automação que colocam a climatização do seu ambiente sob comando de um toque, do app ou da voz.</p>
@@ -50,7 +52,7 @@
         <div class="filter-pills">
           <span class="filter-pill active">Todos os painéis</span>
         </div>
-        <a href="carrinho.html" class="btn btn-ghost btn-sm">Ir para o carrinho →</a>
+        <a href="carrinho.php" class="btn btn-ghost btn-sm">Ir para o carrinho →</a>
       </div>
 
       <div class="product-grid" data-catalog="painel">
@@ -89,7 +91,7 @@
           <h2>Quer automatizar toda a sua loja ou escritório?</h2>
           <p>Temos soluções multi-zona para ambientes comerciais de qualquer porte.</p>
         </div>
-        <a href="contato.html" class="btn btn-amber">Solicitar projeto comercial</a>
+        <a href="contato.php" class="btn btn-amber">Solicitar projeto comercial</a>
       </div>
     </div>
   </section>
@@ -100,7 +102,7 @@
     <div class="footer-grid">
       <div>
         <div class="brand" style="margin-bottom:12px;">
-          <span class="brand-mark">G</span>
+          <img src="logo.png" alt="Gelacionado" class="Footer_logo">
           <span>Gelacionado</span>
         </div>
         <p style="font-size:.88rem;">Climatização e automação inteligente de ambientes em Fortaleza e região metropolitana.</p>
@@ -108,17 +110,17 @@
       <div>
         <h4>NAVEGAÇÃO</h4>
         <ul>
-          <li><a href="index.html">Início</a></li>
-          <li><a href="servicos.html">Serviços</a></li>
-          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="index.php">Início</a></li>
+          <li><a href="servicos.php">Serviços</a></li>
+          <li><a href="sobre.php">Sobre nós</a></li>
         </ul>
       </div>
       <div>
         <h4>ATENDIMENTO</h4>
         <ul>
-          <li><a href="contato.html">Fale conosco</a></li>
-          <li><a href="carrinho.html">Meu carrinho</a></li>
-          <li><a href="admin.html">Painel administrativo</a></li>
+          <li><a href="contato.php">Fale conosco</a></li>
+          <li><a href="carrinho.php">Meu carrinho</a></li>
+          <li><a href="admin.php">Painel administrativo</a></li>
         </ul>
       </div>
       <div>

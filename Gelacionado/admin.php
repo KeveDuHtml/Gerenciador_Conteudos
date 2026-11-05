@@ -1,3 +1,4 @@
+<?php require __DIR__ . "/auth.php"; require_login(); ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,20 +12,21 @@
 
 <header class="site-header">
   <div class="container">
-    <a href="index.html" class="brand">
-      <span class="brand-mark">G</span>
+    <a href="index.php" class="brand">
+      <img src="logo.png" alt="Gelacionado" class="imagem_logo">
       <span>Gelacionado<small>PAINEL ADMINISTRATIVO</small></span>
     </a>
 
     <nav class="main-nav" id="main-nav">
-      <a href="index.html">Início</a>
-      <a href="servicos.html">Serviços</a>
-      <a href="paineis-inteligentes.html">Painéis Inteligentes</a>
-      <a href="contato.html">Contato</a>
+      <a href="index.php">Início</a>
+      <a href="servicos.php">Serviços</a>
+      <a href="paineis-inteligentes.php">Painéis Inteligentes</a>
+      <a href="contato.php">Contato</a>
     </nav>
 
     <div class="header-actions">
       <button id="admin-logout" class="btn btn-ghost btn-sm" style="display:none;">Sair</button>
+      <a href="logout.php" class="btn btn-ghost btn-sm">Sair da conta</a>
       <button class="nav-toggle" aria-label="Abrir menu" aria-controls="main-nav">☰</button>
     </div>
   </div>
@@ -58,8 +60,8 @@
       <button type="button" class="admin-nav-item active" data-admin-view="produtos">📦 Produtos &amp; Serviços</button>
       <button type="button" class="admin-nav-item" data-admin-view="geral">📊 Visão geral</button>
       <h4 style="margin-top:28px;">ATALHOS</h4>
-      <a class="admin-nav-item" href="servicos.html">Ver página de Serviços</a>
-      <a class="admin-nav-item" href="paineis-inteligentes.html">Ver página de Painéis</a>
+      <a class="admin-nav-item" href="servicos.php">Ver página de Serviços</a>
+      <a class="admin-nav-item" href="paineis-inteligentes.php">Ver página de Painéis</a>
     </aside>
 
     <div class="admin-main">
